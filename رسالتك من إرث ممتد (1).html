@@ -1,0 +1,194 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>رسالتك من إرث ممتد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* Layout: white page under a three-stripe band (white, red, green). Title, name field, tappable Omani names, then the letter card. Single committed look, colors set explicitly. */
+  :root {
+    --bg: #fbf9f6;
+    --ink: #1f2a24;
+    --ink-soft: #566159;
+    --red: #b5162b;
+    --green: #0b6b44;
+    --gold: #b98a2e;
+    --card: #ffffff;
+    --line: #e6dfd3;
+    --chip: #f3efe7;
+    --font-display: "Reem Kufi", "Tajawal", "Segoe UI", sans-serif;
+    --font-body: "Tajawal", "Segoe UI", Tahoma, sans-serif;
+    --font-letter: "Amiri", "Tajawal", serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+    padding-block: 0 44px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .band { height: 10px; margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); background: linear-gradient(90deg, var(--green) 0 33.3%, #fff 33.3% 66.6%, var(--red) 66.6%); border-bottom: 1px solid var(--line); }
+  .wrap { max-width: 540px; margin: 0 auto; padding-top: 32px; display: flex; flex-direction: column; gap: 20px; }
+
+  .kicker { margin: 0; font-family: var(--font-display); font-size: 15px; letter-spacing: .04em; color: var(--green); text-align: center; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 9vw, 42px); line-height: 1.3; text-align: center; margin: 0; text-wrap: balance; }
+  h1 em { font-style: normal; color: var(--red); }
+  .lead { margin: 0; text-align: center; color: var(--ink-soft); text-wrap: balance; }
+
+  form { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 22px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 16px 36px -26px rgba(31,42,36,.5); }
+  label { font-weight: 700; font-size: 15px; }
+  input[type="text"] { width: 100%; min-width: 0; font: inherit; font-size: 18px; color: var(--ink); background: var(--chip); border: 2px solid transparent; border-radius: 14px; padding: 13px 16px; }
+  input[type="text"]::placeholder { color: #8c9690; }
+  input[type="text"]:focus-visible { outline: none; border-color: var(--green); background: #fff; }
+  button.go { font: inherit; font-weight: 700; font-size: 18px; color: #fff; background: var(--red); border: 0; border-radius: 14px; padding: 13px 18px; cursor: pointer; transition: transform .15s ease, background .15s ease; }
+  button.go:hover { background: #9c1224; transform: translateY(-1px); }
+  button.go:active { transform: translateY(1px); }
+  button:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
+  .err { margin: 0; min-height: 1.4em; color: var(--red); font-size: 15px; }
+
+  .names-h { margin: 0; font-size: 14px; color: var(--ink-soft); font-weight: 500; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .chip { font: inherit; font-size: 15px; color: var(--ink); background: var(--chip); border: 1px solid var(--line); border-radius: 999px; padding: 4px 14px; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+  .chip:hover { border-color: var(--green); background: #e8f1ea; }
+
+  .letter { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--red); border-radius: 6px 6px 22px 22px; padding: 28px 24px 24px; box-shadow: 0 22px 44px -28px rgba(31,42,36,.55); animation: rise .6s cubic-bezier(.2,.8,.2,1) both; }
+  .letter .to { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--green); margin: 0 0 12px; overflow-wrap: anywhere; }
+  .letter .text { font-family: var(--font-letter); font-size: 22px; line-height: 2.05; margin: 0; overflow-wrap: anywhere; }
+  .sig { margin-top: 22px; padding-top: 14px; border-top: 1px dashed var(--line); display: flex; flex-direction: column; gap: 0; }
+  .sig .from { color: var(--ink-soft); font-size: 15px; }
+  .sig .name { font-family: var(--font-display); font-weight: 700; font-size: 26px; color: var(--red); }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .letter { animation: none; } button, .chip { transition: none; } }
+</style>
+
+<div dir="rtl" lang="ar">
+  <div class="band" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="kicker">إرث ممتد</p>
+    <h1>اكتشف رسالتك من <em>إرث ممتد</em></h1>
+    <p class="lead">اكتب اسمك في الخانة، وستظهر لك رسالة خاصة بك.</p>
+
+    <form id="f" autocomplete="off" novalidate>
+      <label for="nm">اسم المواطن</label>
+      <input type="text" id="nm" name="nm" placeholder="اكتب اسمك هنا" maxlength="40" enterkeyhint="go">
+      <p class="err" id="err" role="alert"></p>
+      <button class="go" type="submit">اكشف رسالتي</button>
+    </form>
+
+    <div>
+      <p class="names-h">أو اضغط على اسم من القائمة:</p>
+      <ul class="chips" id="chips"></ul>
+    </div>
+
+    <div id="out" aria-live="polite"></div>
+  </div>
+</div>
+
+<script>
+  // أسماء عمانية شائعة (م = ذكر، ث = أنثى). أي اسم آخر يُكتب يحصل أيضًا على رسالة خاصة به.
+  var NAMES = [
+    ["سالم","م"],["سعيد","م"],["خالد","م"],["حمد","م"],["سلطان","م"],["ناصر","م"],["عبدالله","م"],["أحمد","م"],
+    ["محمد","م"],["يوسف","م"],["هلال","م"],["حمود","م"],["مسعود","م"],["راشد","م"],["بدر","م"],["منذر","م"],
+    ["فاطمة","ث"],["مريم","ث"],["عائشة","ث"],["زينب","ث"],["خولة","ث"],["أسماء","ث"],["شيخة","ث"],["موزة","ث"],
+    ["ثريا","ث"],["بدرية","ث"],["نوال","ث"],["هدى","ث"],["سلمى","ث"],["أمل","ث"]
+  ];
+
+  // كل عنصر: [صيغة المذكر, صيغة المؤنث]
+  var OPEN = [
+    ["عزيزي {n}، من أرض عُمان إليك سلام ومحبة.","عزيزتي {n}، من أرض عُمان إليكِ سلام ومحبة."],
+    ["يا {n}، اسمك يحمل رائحة اللبان وطيب الأرض.","يا {n}، اسمكِ يحمل رائحة اللبان وطيب الأرض."],
+    ["{n} الكريم، أنت ابن أرض عُرفت بالوفاء والكرم.","{n} الكريمة، أنتِ ابنة أرض عُرفت بالوفاء والكرم."],
+    ["إليك يا {n}، حفيد البحّارة الذين عبروا المحيطات.","إليكِ يا {n}، حفيدة النساء اللواتي حفظن البيت والذاكرة."],
+    ["{n} العزيز، حيثما كنت يبقى قلبك معلقًا بعُمان.","{n} العزيزة، حيثما كنتِ يبقى قلبكِ معلقًا بعُمان."],
+    ["يا {n}، كم هو جميل أن نكتب لك من إرث ممتد.","يا {n}، كم هو جميل أن نكتب لكِ من إرث ممتد."]
+  ];
+  var BODY = [
+    ["جذورك ضاربة في الجبل والبحر والرمال، وفي كل خطوة تخطوها يمشي معك تاريخ طويل.","جذورك ضاربة في الجبل والبحر والرمال، وفي كل خطوة تخطينها يمشي معكِ تاريخ طويل."],
+    ["من نزوى إلى صور، ومن مسقط إلى صلالة، قصة واحدة اسمها عُمان وأنت فصل جميل منها.","من نزوى إلى صور، ومن مسقط إلى صلالة، قصة واحدة اسمها عُمان وأنتِ فصل جميل منها."],
+    ["أجدادك بنوا الأفلاج والقلاع والسفن، وأنت اليوم تبني ما يفخر به أحفادك.","أجدادك بنوا الأفلاج والقلاع والسفن، وأنتِ اليوم تبنين ما يفخر به أحفادك."],
+    ["كرم الضيافة وقهوة الصباح والتمر في بيتك هي لغة محبة ورثتها عن آبائك.","كرم الضيافة وقهوة الصباح والتمر في بيتك هي لغة محبة ورثتِها عن آبائك."],
+    ["في كل مرة تقول فيها «عُمان» يعلو في قلبك نشيد قديم لا يشيخ.","في كل مرة تقولين فيها «عُمان» يعلو في قلبك نشيد قديم لا يشيخ."],
+    ["سيرة السندباد والخناجر الفضية والحارات القديمة تعيش فيك أينما ذهبت.","سيرة السندباد والخناجر الفضية والحارات القديمة تعيش فيكِ أينما ذهبتِ."],
+    ["هدوؤك وطيبتك وحسن خلقك صورة صادقة عن أهل هذه الأرض.","هدوؤك وطيبتك وحسن خلقك صورة صادقة عن أهل هذه الأرض."],
+    ["الخريف في ظفار والغيم على الجبل الأخضر يذكّراننا أن في عُمان جمالًا لا ينتهي.","الخريف في ظفار والغيم على الجبل الأخضر يذكّراننا أن في عُمان جمالًا لا ينتهي."]
+  ];
+  var WISH = [
+    ["أتمنى لك عمرًا مباركًا وخطوات ثابتة نحو كل ما تحلم به.","أتمنى لكِ عمرًا مباركًا وخطوات ثابتة نحو كل ما تحلمين به."],
+    ["كن دائمًا امتدادًا مشرفًا لهذا الإرث، ووصّله لمن بعدك كما وصلك.","كوني دائمًا امتدادًا مشرفًا لهذا الإرث، ووصّليه لمن بعدك كما وصلكِ."],
+    ["حفظك الله وحفظ عُمان بأهلها، وجعل أيامك كلها خيرًا.","حفظكِ الله وحفظ عُمان بأهلها، وجعل أيامكِ كلها خيرًا."],
+    ["فخورون بك، وفخورون بأن نكون جزءًا من هذه الحكاية معك.","فخورون بكِ، وفخورون بأن نكون جزءًا من هذه الحكاية معكِ."],
+    ["نسأل الله لك التوفيق والسداد، وأن تبقى عُمان في عينك دائمًا جميلة.","نسأل الله لكِ التوفيق والسداد، وأن تبقى عُمان في عينكِ دائمًا جميلة."],
+    ["دمت لعُمان، ودامت عُمان لك وطنًا وسكنًا وفخرًا.","دمتِ لعُمان، ودامت عُمان لكِ وطنًا وسكنًا وفخرًا."]
+  ];
+
+  function norm(s) {
+    return s.replace(/[ً-ٰٟـ]/g, "")
+            .replace(/[أإآٱ]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه")
+            .replace(/\s+/g, " ").trim();
+  }
+  function hash(str, seed) {
+    var h = 2166136261 ^ seed;
+    for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return h >>> 0;
+  }
+  var GENDER = {};
+  NAMES.forEach(function (p) { GENDER[norm(p[0])] = p[1] === "ث" ? 1 : 0; });
+  function genderOf(display, key) {
+    if (key in GENDER) return GENDER[key];
+    return /[ةه]$/.test(display.trim()) || /ه$/.test(key) ? 1 : 0;
+  }
+  function build(display, key) {
+    var g = genderOf(display, key);
+    // مفتاح الرسالة: يختلف باختلاف الاسم، ويبقى ثابتًا لنفس الاسم
+    var o = OPEN[hash(key, 11) % OPEN.length][g];
+    var b = BODY[hash(key, 23) % BODY.length][g];
+    var w = WISH[hash(key, 37) % WISH.length][g];
+    return o.replace("{n}", display) + " " + b + " " + w;
+  }
+
+  var form = document.getElementById("f");
+  var input = document.getElementById("nm");
+  var err = document.getElementById("err");
+  var out = document.getElementById("out");
+  var chips = document.getElementById("chips");
+
+  function show(display) {
+    var text = build(display, norm(display));
+    out.textContent = "";
+    var card = document.createElement("article");
+    card.className = "letter";
+    var to = document.createElement("p"); to.className = "to"; to.textContent = display + "،";
+    var p = document.createElement("p"); p.className = "text"; p.textContent = text;
+    var sig = document.createElement("div"); sig.className = "sig";
+    var from = document.createElement("span"); from.className = "from"; from.textContent = "بكل محبة،";
+    var nm = document.createElement("span"); nm.className = "name"; nm.textContent = "إرث ممتد";
+    sig.appendChild(from); sig.appendChild(nm);
+    card.appendChild(to); card.appendChild(p); card.appendChild(sig);
+    out.appendChild(card);
+    try { card.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (x) {}
+  }
+
+  NAMES.forEach(function (p) {
+    var li = document.createElement("li");
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.textContent = p[0];
+    b.addEventListener("click", function () { input.value = p[0]; err.textContent = ""; show(p[0]); });
+    li.appendChild(b); chips.appendChild(li);
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var display = input.value.replace(/\s+/g, " ").trim();
+    if (!display) { err.textContent = "اكتب اسمك أولًا ثم اضغط على الزر."; input.focus(); return; }
+    err.textContent = "";
+    show(display);
+  });
+</script>
+
+</body></html>
